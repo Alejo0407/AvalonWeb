@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">    
+    <ui:composition>
+        <h:panelGrid columns="1"  cellpadding="5" cellspacing="5" 
+        	styleClass = "log-panel">
+        	<h:form>
+            <h:graphicImage value="/css/imagenes/contenido/Usuario.png" />
+            <h:panelGrid columns="3" style="margin-left:auto;margin-right:auto;text-align:left;">                   
+				
+            	<!-- NOMBRE DE USUARIO -->
+                <p:outputLabel value="Usuario: "/>
+                <p:selectOneMenu id = "combo_usuarios" partialSubmit="true"                                                                        
+                	style="width:134px;" 
+                	value = "#{cAcceso.idxUser}">
+                	<f:selectItem itemLabel = "Elija un Usuario" itemValue = "-5"/>
+                	<f:selectItems value="#{cAcceso.listItemUsers}"/>
+                	<f:ajax execute="@this" listener="#{cAcceso.effectChangeListenerComboUser}" render="combo_modulos" />
+                </p:selectOneMenu>
+                
+                <!-- MODULOS -->
+                <p:outputLabel value="Módulo: " />
+                <p:selectOneMenu id = "combo_modulos"
+                	partialSubmit="true"                                                                        
+                	style="width:134px;" 
+                	value = "#{cAcceso.idxModulo}">
+                	<f:selectItem itemLabel = "-" itemValue = "-5"/>
+                	<f:selectItems value="#{cAcceso.listItemModulos}"/>
+                	<f:ajax execute="@this" listener="#{cAcceso.effectChangeListenerCombo}" />
+                </p:selectOneMenu>
+                
+               <!-- CONTRASEÑA -->
+               <p:outputLabel value="Contraseña: "/>
+               <p:password size="20" value = "#{cAcceso.user.clave}"/>     
+                    
+                <!-- BOTON INGRESAR -->
+                </h:panelGrid>
+                <h:panelGrid columns="1" style="float:right;" cellpadding="0" cellspacing="0">
+                     <p:commandButton   styleClass="btnEntrar" type="submit"
+                     	value="Ingresar al Sistema" 
+                        title="Ingresar al Sistema"
+                        actionListener = "#{cAcceso.validarAcceso}" update = ":content :leftMenu"/>
+                </h:panelGrid>  
+                </h:form>     
+		</h:panelGrid>
+    </ui:composition>
+</html>
