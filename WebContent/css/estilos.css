@@ -51,23 +51,15 @@ body{
 /*CSS PARA EL CONTENIDO*/
 
 /*COSTOS*/
-.pnlContenido1{
-	position:absolute;
-    width: 0px;
-    z-index: 200;
-    top: 0px;
-    left: 0px;
-    bottom:0px;
-    background-color: #004d80 !important;
-    overflow-x: hidden;
-    transition: 0.5s;
-    padding-top: 60px;
+.pnlMenu{
+    width: 200px;
 }
 
-.pnlContenido1 .ui-widget-content{
+.pnlMenu .ui-widget-content{
 	background-color:white !important;
 }
-.pnlContenido2{
+
+.pnlContenido{
 	position:absolute;
 	top:0px;
 	bottom:0px;
@@ -75,18 +67,8 @@ body{
 	border:none;
 	background-color:white !important;
 }
-.pnlContenido2 .ui-widget-content{
+.pnlContenido .ui-widget-content{
 	background-color:white !important;
-}
-
-.btn_span{
-	position:absolute;
-	top:5px !important;
-	left:5px !important;
-	font-size:small;
-}
-.tree-menu-container{
-	
 }
 .tree-menu-style{
 	position:absolute;

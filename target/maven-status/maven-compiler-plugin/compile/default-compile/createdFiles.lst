@@ -16,6 +16,7 @@ modelo\patrimonio\Cpaf0050.class
 modelo\bdpatrimonio\Pat0013.class
 modelo\bdplanificacion\Unidad.class
 modelo\bdcostos\Cct0008.class
+controlador\acceso\SAcceso.class
 modelo\bdsistema\Sys10007.class
 servicio_entidad\SE_SQL_bdcontabilidad.class
 conexion\SQL_Conexion.class
@@ -43,6 +44,7 @@ servicio_entidad\SE_FP_bdcontable.class
 conexion\FoxPro_Conexion.class
 modelo\bdpatrimonio\Pat0014.class
 servicio_entidad\SE_SQL_bdcostos.class
+controlador\acceso\sAppMain.class
 util\FacesUtils.class
 modelo\bdpatrimonio\Pat0080.class
 modelo\bdsistema\Sys10008.class
@@ -80,6 +82,7 @@ modelo\fp\bdcontable\Fcon0015.class
 util\FacesUtils$FacesContextWrapper.class
 modelo\bdcostos\Cct0004.class
 test\CPrincipal.class
+controlador\acceso\ObjetoMenu.class
 modelo\bdcostos\Cct0007.class
 servicio_entidad\SE_FP_bdppto.class
 util\CPaginaUtil.class

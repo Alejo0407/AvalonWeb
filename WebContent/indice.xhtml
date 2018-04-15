@@ -25,32 +25,26 @@
 		</p:dialog>
 		 -->
 		 
-		<p:layout id = "main" fullPage = "true">
+		<h:form id = "mForm">
+			<p:layout id = "main" fullPage = "true">
 			<!-- CONTENIDO DE LA CABECERA -->
-			<p:layoutUnit position="north" styleClass = "main-header">
-				<h:form id = "header">
+				<p:layoutUnit position="north" styleClass = "main-header">
 					<ui:include src="#{cAcceso.header}" />
-				</h:form>
-			</p:layoutUnit>
-			<!-- CONTENIDO -->		
-			<p:layoutUnit position="center" styleClass = "main-content">
-				<h:form id = "content">	
+				</p:layoutUnit>
+				<!-- CONTENIDO -->		
+				<p:layoutUnit position="center" styleClass = "main-content">					
 					<ui:include src="#{cAcceso.content}" />
-				</h:form>
-			</p:layoutUnit>
-			<!-- FOOTER -->
-			<p:layoutUnit  position="south" styleClass = "main-footer">
-				<h:form id = "footer">
+				</p:layoutUnit>
+				<!-- FOOTER -->
+				<p:layoutUnit  position="south" styleClass = "main-footer">
 					<ui:include src="#{cAcceso.footer}" />
-				</h:form>
-			</p:layoutUnit>
-			<!-- Menu -->
-			<p:layoutUnit position="west" styleClass = "main-menu" 
-				rendered ="#{cAcceso.leftMenu != null}">
-				<h:form id = "leftMenu">
+				</p:layoutUnit>
+				<!-- Menu -->
+				<p:layoutUnit position="west" styleClass = "main-menu" 
+					rendered ="#{cAcceso.leftMenu != null}">
 					<ui:include src="#{cAcceso.leftMenu}" />
-				</h:form>
-			</p:layoutUnit>
-		</p:layout>
+				</p:layoutUnit>
+			</p:layout>
+		</h:form>
 	</h:body>
 </html>
