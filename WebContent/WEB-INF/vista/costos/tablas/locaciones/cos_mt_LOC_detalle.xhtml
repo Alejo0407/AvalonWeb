@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ice="http://www.icesoft.com/icefaces/component"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+        <ice:panelGroup>
+            <ice:panelCollapsible expanded="true" style="width: 35%">
+                <f:facet name="header" >
+                    <ice:outputText value="Locaciones " style="font-size: 12px"/>
+                </f:facet>
+                <br/>
+                <ice:panelGrid columns="2" >
+
+                    <ice:outputText value="Locación: " style="font-size: 12px;" />               
+                    <ice:inputText value="#{cCos_mt_LOC.cct0012.locacion}" disabled="#{cCos_mt_LOC.esModificacion}"
+                                   style="width:200px;font-size:12px;height:20px;text-align:right;" maxlength="2" /> 
+
+                    <ice:outputText value="Descripción: " style="font-size: 12px;"/>
+                    <ice:inputText value="#{cCos_mt_LOC.cct0012.des_geo}" 
+                                   style="width:200px;font-size:12px;height:20px;text-align:right;" maxlength="30" /> 
+
+                    <ice:outputText value="Sucursal: " style="font-size: 13px"/>                         
+                    <ice:selectOneMenu partialSubmit="true"                                                                        
+                                       style="width:200px;font-size:14px;height:20px;"
+                                       binding="#{cCos_mt_LOC.indexComboDetalle}"
+                                       valueChangeListener="#{cCos_mt_LOC.effectChangeListenerComboDetalle}">
+                        <f:selectItems value="#{cCos_mt_LOC.listItemZONLOC}"/>
+                    </ice:selectOneMenu>
+
+                </ice:panelGrid>
+                <br/>
+                <ice:panelGroup style="margin-left:50px;"  styleClass="exampleBox">
+                    <ice:panelGrid columns="3" >
+
+                        <ice:commandButton styleClass="btnSave" 
+                                           value="     Guardar" 
+                                           actionListener="#{cCos_mt_LOC.guardar}" 
+                                           onmouseover="javascript: this.className='btnFocoSave';"
+                                           onmouseout="javascript: this.className='btnSave';"/>            
+
+                        <h1>&nbsp;</h1>                                      
+
+                        <ice:commandButton styleClass="btnCancel" 
+                                           value="     Cancelar" 
+                                           actionListener="#{cCos_mt_LOC.cancelar}"
+                                           onmouseover="javascript: this.className='btnFocoCancel';"
+                                           onmouseout="javascript: this.className='btnCancel';"/>
+
+
+                    </ice:panelGrid>
+
+                </ice:panelGroup>
+            </ice:panelCollapsible>
+
+
+
+        </ice:panelGroup>
+
+</html>

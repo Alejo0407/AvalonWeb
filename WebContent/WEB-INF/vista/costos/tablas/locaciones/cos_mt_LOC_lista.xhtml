@@ -1,0 +1,165 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ice="http://www.icesoft.com/icefaces/component"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ice:panelGroup>        
+        <!-- POP UP'S -->
+        <ui:include src="../../../configuracion/popup/cos_pop_up_seleccion.xhtml"/>  
+        <ui:include src="../../../configuracion/popup/cos_pop_up_impresion.xhtml"/>
+
+        <ice:panelGrid columns="2">
+            <ice:panelGroup styleClass="exampleBox">
+
+                <ice:dataTable id="#{cCos_mt_LOC.idTabla}"
+                               rows="10" 
+                               var="dataTabla"
+                               binding="#{cCos_mt_LOC.indexTable}"
+                               value="#{cCos_mt_LOC.listaCct0012}">
+                    <ice:column>
+                        <ice:rowSelector id="selected"
+                                         value="#{dataTabla.selected}"                             
+                                         selectionListener="#{cCos_mt_LOC.rowSelectionListener}"/>
+                        <f:facet name="header">
+                            <ice:outputText value="CÓDIGO"/>
+                        </f:facet>
+                        <ice:outputText value="#{dataTabla.locacion}"/>
+                    </ice:column>
+
+
+                    <ice:column>
+                        <f:facet name="header">
+                            <ice:outputText value="DESCRIPCIÓN"/>
+                        </f:facet>
+                        <ice:outputText value="#{dataTabla.des_geo}"/>
+                    </ice:column>
+
+                    <ice:column>
+                        <f:facet name="header">
+                            <ice:outputText value="SUCURSAL"/>
+                        </f:facet>
+                        <ice:outputText value="#{dataTabla.cos_suc}"/>
+                    </ice:column>
+                </ice:dataTable>
+                <br/>
+                <ice:dataPaginator id="pagListLOC"
+                                   for="#{cCos_mt_LOC.idTabla}"
+                                   paginator="true"
+                                   fastStep="3"
+                                   paginatorMaxPages="4"
+                                   rowsCountVar="rowsCount"
+                                   displayedRowsCountVar="displayedRowsCount"
+                                   firstRowIndexVar="firstRowIndex"
+                                   lastRowIndexVar="lastRowIndex"
+                                   pageCountVar="pageCount"
+                                   pageIndexVar="pageIndex" >
+                    <f:facet name="first">
+                        <ice:graphicImage
+                            url="./vista/imagenes/botones/arrow-first.gif"
+                            style="border:none;"
+                            title="Primera Página" />
+                    </f:facet>
+                    <f:facet name="last">
+                        <ice:graphicImage
+                            url="./vista/imagenes/botones/arrow-last.gif"
+                            style="border:none;"
+                            title="Última Página"/>
+                    </f:facet>
+                    <f:facet name="previous">
+                        <ice:graphicImage
+                            url="./vista/imagenes/botones/arrow-previous.gif"
+                            style="border:none;"
+                            title="Página Anterior"/>
+                    </f:facet>
+                    <f:facet name="next">
+                        <ice:graphicImage
+                            url="./vista/imagenes/botones/arrow-next.gif"
+                            style="border:none;"
+                            title="Siguiente Página"/>
+                    </f:facet>
+                    <f:facet name="fastforward">
+                        <ice:graphicImage  url="./vista/imagenes/botones/arrow-ff.gif"
+                                           style="border:none;"
+                                           title="Avance Rápido"/>
+                    </f:facet>
+                    <f:facet name="fastrewind">
+                        <!--                            <ice:graphicImage url="./xmlhttp/css/rime/css-images/arrow-fr.gif"-->
+                        <ice:graphicImage 
+                            url="./vista/imagenes/botones/arrow-fr.gif"
+                            style="border:none;"
+                            title="Rebobinado Rápido"/>
+                    </f:facet>
+
+                    <ice:outputFormat
+                        value="{0} registros encontrados, mostrando {1} registro(s), del {2} a {3}. Página {4} / {5}."
+                        styleClass="standar" style="font-size: 12px;">
+                        <f:param value="#{rowsCount}"/>
+                        <f:param value="#{displayedRowsCount}"/>
+                        <f:param value="#{firstRowIndex}"/>
+                        <f:param value="#{lastRowIndex}"/>
+                        <f:param value="#{pageIndex}"/>
+                        <f:param value="#{pageCount}"/>
+                    </ice:outputFormat>
+                </ice:dataPaginator>
+            </ice:panelGroup>
+
+        </ice:panelGrid>
+
+        <br/>
+        <ice:panelGrid columns="4">
+            <ice:panelGrid columns="1" visible="#{cAcceso.validarPermiso(cAcceso.user.agrega)}" cellpadding="0" cellspacing="0">                   
+                <ice:commandButton styleClass="btnNew" id="btnNuevo" name="btnNuevo"
+                                   value=" Nuevo" 
+                                   actionListener="#{cCos_mt_LOC.agregar}"   
+                                   disabled="#{!cAcceso.validarPermiso(cAcceso.user.agrega)}"
+                                   onmouseover="javascript: this.className='btnFocoNew';"
+                                   onmouseout="javascript: this.className='btnNew';"
+                                   onblur="javascript: this.className='btnDelete';"/>
+
+            </ice:panelGrid>
+
+            <ice:panelGrid columns="1" visible="#{cAcceso.validarPermiso(cAcceso.user.actualiza)}" cellpadding="0" cellspacing="0">                  
+                <ice:commandButton   styleClass="btnEdit" 
+                                     value="     Modificar" 
+                                     actionListener="#{cCos_mt_LOC.modificar}" 
+                                     disabled="#{!cAcceso.validarPermiso(cAcceso.user.actualiza) }"
+                                     onmouseover="javascript: this.className='btnFocoEdit';"
+                                     onmouseout="javascript: this.className='btnEdit';"/>
+            </ice:panelGrid>
+
+            <ice:panelGrid columns="2" visible="#{cAcceso.validarPermiso(cAcceso.user.elimina)}" cellpadding="0" cellspacing="0">
+                <ice:panelConfirmation id="elimina"   styleClass="pnlEliminar" 
+                                       title="ELIMINAR " 
+                                       acceptLabel="   SI   " 
+                                       cancelLabel="   NO   " 
+                                       message="              ¿Desea eliminar el registro #{cCos_mt_LOC.selLOC.des_geo}?"
+                                       draggable="false"/>
+
+                <ice:commandButton   panelConfirmation="elimina" 
+                                     styleClass="btnDelete" 
+                                     value="    Eliminar" 
+                                     actionListener="#{cCos_mt_LOC.eliminar}"
+                                     disabled="#{!cAcceso.validarPermiso(cAcceso.user.elimina)}"
+                                     onmouseover="javascript: this.className='btnFocoDelete';"
+                                     onmouseout="javascript: this.className='btnDelete';"/>
+            </ice:panelGrid>
+
+            <ice:panelGrid columns="1" visible="#{cAcceso.validarPermiso(cAcceso.user.imprime)}" cellpadding="0" cellspacing="0">                  
+                <ice:commandButton   styleClass="btnPrint" 
+                                     value="     Imprimir" 
+                                     actionListener="#{cCos_mt_LOC.verPopUpImpresion}" 
+                                     disabled="#{!cAcceso.validarPermiso(cAcceso.user.imprime) }"
+                                     onmouseover="javascript: this.className='btnFocoPrint';"
+                                     onmouseout="javascript: this.className='btnPrint';"/>                                 
+            </ice:panelGrid>
+        </ice:panelGrid>
+
+        <br/>            
+
+
+    </ice:panelGroup>
+
+</html>

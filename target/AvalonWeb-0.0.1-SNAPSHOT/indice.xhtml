@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+	<h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <h:form id = "head-info">
+			<title><h:outputText value="#{cAcceso.title}" /></title>
+			<link type = "text/css" rel = "stylesheet" href = "css/estilos.css"/>
+			<link type = "text/css" rel = "stylesheet" href = "css/costos.css"/>
+			<script src = "js/script.js"/>
+		</h:form>
+	</h:head>
+	
+	<h:body>
+	 	<!-- INDICADOR DE ACCION AJAX -->
+		<!-- 
+		<p:ajaxStatus onstart="PF('statusDialog').show()" 
+				onsuccess="PF('statusDialog').hide()" />
+		<p:dialog widgetVar="statusDialog" modal="true" draggable="false" 
+			closable="false" resizable="false" showHeader="false">
+		    <p:graphicImage name="url(css/imagenes/bar.gif)" />
+		</p:dialog>
+		 -->
+		 
+		<h:form id = "mForm">
+			<p:layout id = "main" fullPage = "true">
+			<!-- CONTENIDO DE LA CABECERA -->
+				<p:layoutUnit position="north" styleClass = "main-header">
+					<ui:include src="#{cAcceso.header}" />
+				</p:layoutUnit>
+				<!-- CONTENIDO -->		
+				<p:layoutUnit position="center" styleClass = "main-content">					
+					<ui:include src="#{cAcceso.content}" />
+				</p:layoutUnit>
+				<!-- FOOTER -->
+				<p:layoutUnit  position="south" styleClass = "main-footer">
+					<ui:include src="#{cAcceso.footer}" />
+				</p:layoutUnit>
+				<!-- Menu -->
+				<p:layoutUnit position="west" styleClass = "main-menu" 
+					rendered ="#{cAcceso.leftMenu != null}">
+					<ui:include src="#{cAcceso.leftMenu}" />
+				</p:layoutUnit>
+			</p:layout>
+		</h:form>
+	</h:body>
+</html>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<!-- 
+    OLD VERSION   
+        <ice:panelTabSet selectedIndex="#{cCos_mt_LOC.tabIndex}">
+            <ice:panelTab label="Listado General">
+                <ui:include src="cos_mt_LOC_lista.xhtml"/>
+            </ice:panelTab>
+            <ice:panelTab label="Mantenimiento de Locaciones">
+                <ui:include src="cos_mt_LOC_detalle.xhtml"/>
+            </ice:panelTab>
+        </ice:panelTabSet>
+-->
+    <ui:composition>
+        <p:tabView id = "ctl_main" styleClass = "">
+            <p:tab>
+                <ui:include src = "cos_mt_LOC_lista.xhtml"/>
+            </p:tab>
+            <p:tab>
+                <ui:include src = "cos_mt_LOC_detalle.xhtml"/>
+            </p:tab>
+        </p:tabView>
+    </ui:composition>
+</html>
