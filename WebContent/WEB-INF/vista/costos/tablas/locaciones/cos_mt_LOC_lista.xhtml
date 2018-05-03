@@ -2,12 +2,39 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ice="http://www.icesoft.com/icefaces/component"
-      xmlns:f="http://java.sun.com/jsf/core">
-
-    <ice:panelGroup>        
-        <!-- POP UP'S -->
+      xmlns:p="http://primefaces.org/ui">
+   
+   	
+   	<ui:composition>
+   		<p:dataTable id = "cos_mt_loc_lista_datatable" rows = "10">
+   			<p:column>
+   				<f:facet name="header">
+   					<h:outputText value="CÓDIGO" />
+   				</f:facet>
+   				<h:outputText value="TEST1" />
+   			</p:column>
+   			
+   			<p:column>
+   				<f:facet name="header">
+   					<h:outputText value="DESCRIPCIÓN" />
+   				</f:facet>
+   				<h:outputText value="TEST2" />
+   			</p:column>
+   			
+   			<p:column>
+   				<f:facet name="header">
+   					<h:outputText value="SUCURSAL" />
+   				</f:facet>
+   				<h:outputText value="TEST3" />
+   			</p:column>
+   		</p:dataTable>
+   	</ui:composition>
+   	
+    <!-- POP UP'S -->
+    <!--  
+    <ice:panelGroup>     
         <ui:include src="../../../configuracion/popup/cos_pop_up_seleccion.xhtml"/>  
         <ui:include src="../../../configuracion/popup/cos_pop_up_impresion.xhtml"/>
 
@@ -86,7 +113,6 @@
                                            title="Avance Rápido"/>
                     </f:facet>
                     <f:facet name="fastrewind">
-                        <!--                            <ice:graphicImage url="./xmlhttp/css/rime/css-images/arrow-fr.gif"-->
                         <ice:graphicImage 
                             url="./vista/imagenes/botones/arrow-fr.gif"
                             style="border:none;"
@@ -161,5 +187,5 @@
 
 
     </ice:panelGroup>
-
+	-->
 </html>

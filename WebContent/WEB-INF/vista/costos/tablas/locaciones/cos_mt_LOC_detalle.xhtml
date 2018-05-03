@@ -1,10 +1,35 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ice="http://www.icesoft.com/icefaces/component"
-      xmlns:f="http://java.sun.com/jsf/core">
-
-        <ice:panelGroup>
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+      
+      <ui:composition>      	
+      	<p:panel header = "Locaciones">
+      		<h:form>
+      		<h:panelGrid columns = "2">
+      			<p:outputLabel value = "Locación: " for = "cos_mt_loc_detalle_input_locacion"/>
+      			<p:inputText id ="cos_mt_loc_detalle_input_locacion"/>
+      			
+      			<p:outputLabel value = "Descripción: " for = "cos_mt_loc_detalle_input_descripcion"/>
+      			<p:inputText id ="cos_mt_loc_detalle_input_descripcion"/>
+      			
+      			<p:outputLabel value = "Sucursal: " for = "cos_mt_loc_detalle_input_sucursal"/>
+      			<p:selectOneMenu id = "cos_mt_loc_detalle_input_sucursal">
+      				<f:selectItem itemLabel="Test" itemValue = "1"/>
+      			</p:selectOneMenu>
+      		</h:panelGrid>
+      		
+      		<p:panelGrid columns = "2">
+      			<p:commandButton value="     Guardar"/>
+      			<p:commandButton value="     Cancelar"/>
+      		</p:panelGrid>
+      		</h:form>
+      	</p:panel>
+      </ui:composition>
+	<!--          <ice:panelGroup>
             <ice:panelCollapsible expanded="true" style="width: 35%">
                 <f:facet name="header" >
                     <ice:outputText value="Locaciones " style="font-size: 12px"/>
@@ -56,5 +81,6 @@
 
 
         </ice:panelGroup>
-
+	-->
+	
 </html>
