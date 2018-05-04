@@ -8,28 +8,68 @@
    
    	
    	<ui:composition>
-   		<p:dataTable id = "cos_mt_loc_lista_datatable" rows = "10">
-   			<p:column>
-   				<f:facet name="header">
-   					<h:outputText value="CÓDIGO" />
-   				</f:facet>
-   				<h:outputText value="TEST1" />
-   			</p:column>
-   			
-   			<p:column>
-   				<f:facet name="header">
-   					<h:outputText value="DESCRIPCIÓN" />
-   				</f:facet>
-   				<h:outputText value="TEST2" />
-   			</p:column>
-   			
-   			<p:column>
-   				<f:facet name="header">
-   					<h:outputText value="SUCURSAL" />
-   				</f:facet>
-   				<h:outputText value="TEST3" />
-   			</p:column>
-   		</p:dataTable>
+      <!-- INSERTAR POP UPS-->
+
+      <p:panelGrid columns = "2" layout = "grid">
+        <p:dataTable id = "cos_mt_loc_lista_datatable" paginator = "true" rows = "10" >
+          <p:column>
+            <f:facet name="header">
+              <h:outputText value="CÓDIGO" />
+            </f:facet>
+            <h:outputText value="TEST1" />
+          </p:column>
+          
+          <p:column>
+            <f:facet name="header">
+              <h:outputText value="DESCRIPCIÓN" />
+            </f:facet>
+            <h:outputText value="TEST2" />
+          </p:column>
+          
+          <p:column>
+            <f:facet name="header">
+              <h:outputText value="SUCURSAL" />
+            </f:facet>
+            <h:outputText value="TEST3" />
+          </p:column>
+        </p:dataTable>
+        <p:panelGrid columns = "4">
+          <h:panelGrid columns = "1">
+            <p:commandButton styleClass="btnNew" id="btnNuevo" name="btnNuevo"
+                                   value=" Nuevo" 
+                                   actionListener=  "#{cCos_mt_LOC.agregar}"   
+                                   disabled=        "#{!cAcceso.validarPermiso(cAcceso.user.agrega)}"
+                                   onmouseover=     "javascript: this.className='btnFocoNew';"
+                                   onmouseout=      "javascript: this.className='btnNew';"
+                                   onblur=          "javascript: this.className='btnDelete';"/>
+          </h:panelGrid>
+          <h:panelGrid columns = "1">
+            <p:commandButton styleClass="btnEdit" 
+                                     value="     Modificar" 
+                                     actionListener="#{cCos_mt_LOC.modificar}" 
+                                     disabled="#{!cAcceso.validarPermiso(cAcceso.user.actualiza) }"
+                                     onmouseover="javascript: this.className='btnFocoEdit';"
+                                     onmouseout="javascript: this.className='btnEdit';"/>
+          </h:panelGrid>
+          <h:panelGrid columns = "2">
+            <p:confirmDialog>
+              
+            </p:confirmDialog>
+            <p:commandButton>
+              
+            </p:commandButton>
+          </h:panelGrid>
+
+          <h:panelGrid columns = "1">
+            <p:commandButton styleClass="btnPrint" 
+                                     value="     Imprimir" 
+                                     actionListener="#{cCos_mt_LOC.verPopUpImpresion}" 
+                                     disabled="#{!cAcceso.validarPermiso(cAcceso.user.imprime) }"
+                                     onmouseover="javascript: this.className='btnFocoPrint';"
+                                     onmouseout="javascript: this.className='btnPrint';"/>
+          </h:panelGrid>
+        </p:panelGrid>
+      </p:panelGrid>
    	</ui:composition>
    	
     <!-- POP UP'S -->
